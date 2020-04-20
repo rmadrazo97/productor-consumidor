@@ -11,7 +11,7 @@ let scrape = async () => {
     const result = await page.evaluate(() => {
 
         let url = location.href;                                     // get the URL of the actor
-        let Name = document.querySelector('.nickname').innerText;    // get the Name of the actor 
+        let Name = document.querySelector('.fn').innerText;          // get the Name of the actor 
         let Role = document.querySelector('.role').innerText;        // Get the role of the actor
         let temp = Name.split(/\s+/);                                // Split the actor's name 
         let temp2 = temp[temp.length - 1]                            // Get the last item of the Name
