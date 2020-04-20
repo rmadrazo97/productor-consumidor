@@ -1,7 +1,8 @@
 # Productor Consumidor
 
 Se desea crear en una base de datos las relaciones existentes entre actrices y los films en los que ha laborado cada una, para esto el estudiante deberá de leer el HTML del sitio de actrices y almacenar lo que se le indica  en una base de datos mysql 
-
+### Instrucciones del proyecto:
+- https://github.com/rmadrazo97/productor-consumidor/blob/master/Files/Productorconsumidor.pdf
 ## Estructura
 
 El proyecto está compuesto de 3 piezas de software cada una corriendo en diferentes maquinas: 
@@ -42,6 +43,13 @@ El proyecto está compuesto de 3 piezas de software cada una corriendo en difere
 
 ## Referencias
 - URL BASE: https://en.wikipedia.org/wiki/List_of_American_film_actresses
+
+## Diagramas de la solución
+### Productor
+![Diagrama Consumidor](https://github.com/rmadrazo97/productor-consumidor/blob/master/Files/OS-proyecto%20-%20Productor.png?raw=true)
+### Consumidor
+![Diagrama Consumidor](https://github.com/rmadrazo97/productor-consumidor/blob/master/Files/OS-proyecto%20-%20Consumidor.png?raw=true)
+
 ## Contributors (github users)
 - rmadrazo97
 - .... .... ....
