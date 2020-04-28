@@ -1,0 +1,13 @@
+C:\Users\joseg\source\repos\productor-consumidor\primera_prueba\primera_prueba\bin\Debug\netcoreapp3.1\primera_prueba.exe
+C:\Users\joseg\source\repos\productor-consumidor\primera_prueba\primera_prueba\bin\Debug\netcoreapp3.1\primera_prueba.deps.json
+C:\Users\joseg\source\repos\productor-consumidor\primera_prueba\primera_prueba\bin\Debug\netcoreapp3.1\primera_prueba.runtimeconfig.json
+C:\Users\joseg\source\repos\productor-consumidor\primera_prueba\primera_prueba\bin\Debug\netcoreapp3.1\primera_prueba.runtimeconfig.dev.json
+C:\Users\joseg\source\repos\productor-consumidor\primera_prueba\primera_prueba\bin\Debug\netcoreapp3.1\primera_prueba.dll
+C:\Users\joseg\source\repos\productor-consumidor\primera_prueba\primera_prueba\bin\Debug\netcoreapp3.1\primera_prueba.pdb
+C:\Users\joseg\source\repos\productor-consumidor\primera_prueba\primera_prueba\obj\Debug\netcoreapp3.1\primera_prueba.csprojAssemblyReference.cache
+C:\Users\joseg\source\repos\productor-consumidor\primera_prueba\primera_prueba\obj\Debug\netcoreapp3.1\primera_prueba.csproj.CoreCompileInputs.cache
+C:\Users\joseg\source\repos\productor-consumidor\primera_prueba\primera_prueba\obj\Debug\netcoreapp3.1\primera_prueba.AssemblyInfoInputs.cache
+C:\Users\joseg\source\repos\productor-consumidor\primera_prueba\primera_prueba\obj\Debug\netcoreapp3.1\primera_prueba.AssemblyInfo.cs
+C:\Users\joseg\source\repos\productor-consumidor\primera_prueba\primera_prueba\obj\Debug\netcoreapp3.1\primera_prueba.dll
+C:\Users\joseg\source\repos\productor-consumidor\primera_prueba\primera_prueba\obj\Debug\netcoreapp3.1\primera_prueba.pdb
+C:\Users\joseg\source\repos\productor-consumidor\primera_prueba\primera_prueba\obj\Debug\netcoreapp3.1\primera_prueba.genruntimeconfig.cache
