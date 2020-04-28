@@ -3,23 +3,41 @@ import logo from './logo.svg';
 import './App.css';
 import Productor from './components/Productor';
 import Dashboard from './components/Dashboard';
+import Resources from './components/Resources';
+import Log from './components/Log';
 
 function App() {
   return (
     <div className="" style={{ minHeight: "100vh" }}>
       <header className="">
-        <div>
-          <div className="mb-2">
-            <Dashboard />
-          </div>
-          <div className="mb-2">
-            <Productor />
-          </div>
-          <div className="mb-2">
-            <Productor />
-          </div>
-        </div>
+        <script src="https://unpkg.com/react/umd/react.production.min.js" crossorigin></script>
+
+        <script
+          src="https://unpkg.com/react-dom/umd/react-dom.production.min.js"
+          crossorigin></script>
+
+        <script
+          src="https://unpkg.com/react-bootstrap@next/dist/react-bootstrap.min.js"
+          crossorigin></script>
       </header>
+      <div>
+        <div className="mb-2">
+          <Dashboard />
+        </div>
+        <div className="mb-2">
+          <Productor />
+        </div>
+        <div className="mb-2">
+          <Productor />
+        </div>
+        <hr></hr>
+        <div className="mb-2">
+          <Resources />
+        </div>
+        <div className="mb-2">
+          <Log />
+        </div>
+      </div>
     </div >
   );
 }

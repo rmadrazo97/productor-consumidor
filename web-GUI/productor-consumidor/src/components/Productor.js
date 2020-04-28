@@ -16,6 +16,7 @@ function Productor() {
 
                     </div>
                 </div>
+
                 <div className="row mt-4">
                     <div className="col text-center" style={{ fontSize: "15px" }}>
                         <a href="#" className="btn btn-info m-2">Iniciar Productor</a>

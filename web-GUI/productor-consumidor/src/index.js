@@ -1,12 +1,15 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
+import $ from 'jquery';
+import Popper from 'popper.js';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
-import Productor from './components/Productor'
+import Test from './components/Test'
+
 
 ReactDOM.render(
   <React.StrictMode>
