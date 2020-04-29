@@ -1,10 +1,12 @@
 const puppeteer = require('puppeteer');
+let jsonData = require('./CrawlerLinks.json');
+var fs = require('fs');
 
-let scrape = async () => {
+let scrape = async (act) => {
 
     const browser = await puppeteer.launch({ headless: false }); //To see the process of the Crawler.
     const page = await browser.newPage();
-    await page.goto('https://en.wikipedia.org/wiki/Diahnne_Abbott');       // URL that we want to scrape
+    await page.goto(act);       // URL that we want to scrape
     //await page.click('#infinite_arrivals_cont > div:nth-child(1) > div.picture_product_4 > a > img')    //Make click on a specific part of the page
     await page.waitFor(1000);                                       //delay to make sure, everything on page loads
 
@@ -30,7 +32,6 @@ let scrape = async () => {
     });
 
 
-
     //Scrape
 
     browser.close();
@@ -38,7 +39,24 @@ let scrape = async () => {
 
 };
 
-scrape().then((value) => {
+
+//var act = 'https://en.wikipedia.org/wiki/Diahnne_Abbott'
+
+let act = jsonData.A[3]
+
+scrape(act).then((value) => {
     console.log('Result: \n', value);         //Sucess
     console.log('\n Fin del Scraping. \n ');
+
+    const json = JSON.stringify(value)
+
+    fs.writeFile(value.Name + '.json', json, (err) => {
+        if (err) {
+            console.error(err)
+            throw err
+        }
+        console.log('Saved data to file.')
+
+    });
+
 });
