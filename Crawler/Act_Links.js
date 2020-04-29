@@ -1,5 +1,5 @@
 const puppeteer = require('puppeteer');
-var fs = require('fs');
+var Fs = require('fs');
 
 var alm = []
 
@@ -49,6 +49,16 @@ let scrape = async () => {
 };
 
 scrape().then((value) => {
-    console.log('Result: \n', value);         //Sucess
+    console.log('Result: \n', value.data);         //Sucess
+    const json = JSON.stringify(value.data)
     console.log('\n Fin del Scraping. \n ');
+
+    Fs.writeFile("./Links.json", json, (err) => {
+        if (err) {
+            console.error(err)
+            throw err
+        }
+
+        console.log('Saved data to file.')
+    });
 });
