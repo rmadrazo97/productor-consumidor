@@ -1,49 +1,11 @@
 const functions = require('firebase-functions');
-const puppeteer = require('puppeteer');
-let jsonData = require('./CrawlerLinks.json');
+let Adata = require('./data/a.json');
+
 const express = require("express");
+var amqp = require('amqplib/callback_api');
+const amqpURl = 'amqp://jfdrdxpr:I9KoAC_Nx1EO_yaVGJ0O79plDcFb-X75@mosquito.rmq.cloudamqp.com/jfdrdxpr';
 
 const app = express();
-
-let scrape = async (act) => {
-
-    const browser = await puppeteer.launch({
-        args: ['--no-sandbox'],
-        headless: true
-    }); //To see the process of the Crawler.
-    const page = await browser.newPage();
-    await page.goto(act);       // URL that we want to scrape
-    //await page.click('#infinite_arrivals_cont > div:nth-child(1) > div.picture_product_4 > a > img')    //Make click on a specific part of the page
-    await page.waitFor(700);                                       //delay to make sure, everything on page loads
-
-    const result = await page.evaluate(() => {
-
-        let url = location.href;
-        let Name = document.querySelector('.fn').innerText;
-        let Role = document.querySelector('.role').innerText;
-        let temp = Name.split(/\s+/);
-        let temp2 = temp[temp.length - 1]
-        let Letra = temp2.charAt(0)
-        let films = Array.from(document.querySelectorAll(".wikitable a")).map(anchor => [anchor.href, anchor.textContent])
-        return {
-            url,
-            Name,
-            Role,
-            Letra,
-            films
-        }
-
-
-
-    });
-
-
-    //Scrape
-
-    browser.close();
-    return result;
-
-};
 
 // --- function to get characters array based on starting and ending point
 
@@ -60,6 +22,7 @@ function genCharArray(charA, charZ) {
 
 app.get("/:letters", async (req, res) => {
     const letters = req.params.letters;
+    var msg = '';
 
     var letras = letters.toUpperCase();
 
@@ -68,23 +31,41 @@ app.get("/:letters", async (req, res) => {
         arr = genCharArray(letras.slice(0, 1), letras.slice(1, 2));
 
     } else {
-        
+
         arr = [letras];
 
     }
+    amqp.connect(amqpURl, function (error0, connection) {
+        if (error0) {
+            throw error0;
+        }
+        connection.createChannel(function (error1, channel) {
+            if (error1) {
+                throw error1;
+            }
+
+            var queue = 'hello';
+            //msg = Adata;
+            //msg = JSON.stringify(Adata);
+
+            for (i = 0; i < Adata.length; i++) {
+                channel.assertQueue(queue, {
+                    durable: false
+                });
+                channel.sendToQueue(queue, Buffer.from(JSON.stringify(Adata[i])));
+                console.log(" [x] Sent %s", msg);
+            }
+
+            return null;
+        });
+        setTimeout(function () {
+            connection.close();
+            process.exit(0);
+        }, 500);
+        res.status(200).send(JSON.stringify({ received_letters: letters, action: "send via rabitMQ" }));
 
 
-    scrape("https://en.wikipedia.org/wiki/Beverly_Aadland").then((value) => {
-        //to_return = value;
-        const json = JSON.stringify(value);
-        console.log(json);
-        res.status(200).send(JSON.stringify({ in_letters: letters, values: value, stupid: 'yes' }));
-        return null;
-    }).catch((err) => {
-        console.log('Error:', err)
     });
-
-    //res.status(200).send(JSON.stringify({ in_letters: letters, values: to_return, stupid: 'yes' }));
 })
 
 

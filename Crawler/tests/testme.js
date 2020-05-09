@@ -2,6 +2,7 @@ const puppeteer = require('puppeteer');
 let jsonData = require('./CrawlerLinks.json');
 var fs = require('fs');
 
+
 let scrape = async (urls) => {
 
     datass = []
