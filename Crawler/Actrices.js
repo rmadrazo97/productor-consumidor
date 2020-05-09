@@ -59,17 +59,19 @@ let scrape = async (urls) => {
 let act = jsonData.A
 
 scrape(act).then((value) => {
-    console.log('Result: \n', value[1]);         //Sucess
+    console.log('Result: \n', value);         //Sucess
     console.log('\n Fin del Scraping. \n ');
 
-    //const json = JSON.stringify(value)
+    const json = JSON.stringify(value)
 
-    //fs.writeFile(value.Name + '.json', json, (err) => {
-    //   if (err) {
-    //       console.error(err)
-    //       throw err
-    //  }
-    //  console.log('Saved data to file.')
+    fs.writeFile('noselaverdad.json', json, (err) => {
+        if (err) {
+            console.error(err)
+            throw err
+        }
+        console.log('Saved data to file.')
+    });
 
 });
+
 
