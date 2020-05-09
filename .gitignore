@@ -1,2 +1,4 @@
-./web-GUI/productor-consumidor/node_modules/
-
+web-GUI/productor-consumidor/node_modules/
+Crawler/cloud-function/node_modules/
+Crawler/cloud-function/functions/node_modules/
+Crawler/tests/node_modules/
