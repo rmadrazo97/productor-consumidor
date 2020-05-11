@@ -10,15 +10,15 @@ function App() {
   return (
     <div className="" style={{ minHeight: "100vh" }}>
       <header className="">
-        <script src="https://unpkg.com/react/umd/react.production.min.js" crossorigin></script>
+        <script src="https://unpkg.com/react/umd/react.production.min.js" crossOrigin="true" ></script>
 
         <script
           src="https://unpkg.com/react-dom/umd/react-dom.production.min.js"
-          crossorigin></script>
+          crossOrigin="true" ></script>
 
         <script
           src="https://unpkg.com/react-bootstrap@next/dist/react-bootstrap.min.js"
-          crossorigin></script>
+          crossOrigin="true" ></script>
       </header>
       <div>
         <div className="mb-2">

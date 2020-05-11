@@ -15,13 +15,13 @@ amqp.connect(amqpURl, function (error0, connection) {
         var queue = 'hello';
 
         channel.assertQueue(queue, {
-            durable: false
+            durable: false,
         });
 
         console.log(" [*] Waiting for messages in %s. To exit press CTRL+C", queue);
 
         channel.consume(queue, function (msg) {
-            console.log(" [x] Received %s", msg.content.toString());
+            console.log("\n >> Received %s", JSON.parse(msg.content));
         }, {
             noAck: true
         });

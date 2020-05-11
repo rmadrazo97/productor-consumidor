@@ -1,9 +1,5 @@
 {
-    "result": {
-        "url": "https://en.wikipedia.org/wiki/Beverly_Aadland",
-        "Name": "Beverly Aadland",
-        "Role": "Actress",
-        "Letra": "A",
-        "films": []
-    }
+    "name": "John",
+    "age": 30,
+    "car": null
 }

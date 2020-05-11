@@ -1,14 +1,15 @@
 const functions = require('firebase-functions');
-let Adata = require('./data/a.json');
-
 const express = require("express");
 var amqp = require('amqplib/callback_api');
 const amqpURl = 'amqp://jfdrdxpr:I9KoAC_Nx1EO_yaVGJ0O79plDcFb-X75@mosquito.rmq.cloudamqp.com/jfdrdxpr';
 
+// ------
+let Obj = require('./gen.js');
+
+// ------
 const app = express();
 
 // --- function to get characters array based on starting and ending point
-
 function genCharArray(charA, charZ) {
     var a = [], i = charA.charCodeAt(0), j = charZ.charCodeAt(0);
     for (; i <= j; ++i) {
@@ -20,9 +21,9 @@ function genCharArray(charA, charZ) {
 // ----------------------------------
 // --------- Express Methods --------
 
-app.get("/:letters", async (req, res) => {
+app.get("/:letters/:queue", async (req, res) => {
     const letters = req.params.letters;
-    var msg = '';
+    const queue = req.params.queue;
 
     var letras = letters.toUpperCase();
 
@@ -35,6 +36,7 @@ app.get("/:letters", async (req, res) => {
         arr = [letras];
 
     }
+
     amqp.connect(amqpURl, function (error0, connection) {
         if (error0) {
             throw error0;
@@ -44,25 +46,35 @@ app.get("/:letters", async (req, res) => {
                 throw error1;
             }
 
-            var queue = 'hello';
-            //msg = Adata;
-            //msg = JSON.stringify(Adata);
-
-            for (i = 0; i < Adata.length; i++) {
-                channel.assertQueue(queue, {
-                    durable: false
+            //var queue = 'hello';
+            channel.assertQueue(queue, {
+                durable: false
+            });
+            if (arr.length > 1) {
+                arr.forEach(letra => {
+                    for (i = 0; i < Obj[letra].length; i++) {
+                        channel.sendToQueue(queue, Buffer.from(JSON.stringify(Obj[letra][i]) + ' | '));
+                        console.log(" - Sent %s", JSON.stringify(Obj[letra][i]) + ' | ');
+                    }
                 });
-                channel.sendToQueue(queue, Buffer.from(JSON.stringify(Adata[i])));
-                console.log(" [x] Sent %s", msg);
+
+            } else {
+                //letra = arr[0];
+                for (i = 0; i < Obj[arr[0]].length; i++) {
+                    channel.sendToQueue(queue, Buffer.from(JSON.stringify(Obj[arr[0]][i]) + ' | '));
+                    console.log(" - Sent %s", JSON.stringify(Obj[letra][i]) + ' | ');
+                }
             }
+
 
             return null;
         });
         setTimeout(function () {
             connection.close();
+            res.status(200).send(JSON.stringify({ received_letters: letters, queue: queue, action: "send via rabitMQ" }));
             process.exit(0);
-        }, 500);
-        res.status(200).send(JSON.stringify({ received_letters: letters, action: "send via rabitMQ" }));
+        }, 100);
+
 
 
     });

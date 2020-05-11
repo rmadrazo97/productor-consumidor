@@ -18,6 +18,7 @@ amqp.connect(amqpURl, function (error0, connection) {
         channel.assertQueue(queue, {
             durable: false
         });
+
         channel.sendToQueue(queue, Buffer.from(msg));
 
         console.log(" [x] Sent %s", msg);
