@@ -2,3 +2,8 @@ web-GUI/productor-consumidor/node_modules/
 Crawler/cloud-function/node_modules/
 Crawler/cloud-function/functions/node_modules/
 Crawler/tests/node_modules/
+SysOps_Consumidor/.vs
+SysOps_Consumidor/bin
+SysOps_Consumidor/obj
+SysOps_Consumidor/packages
+SysOps_Consumidor/Properties
